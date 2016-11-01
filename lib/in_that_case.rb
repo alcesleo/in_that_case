@@ -1,5 +1,9 @@
 require "in_that_case/version"
+require "in_that_case/cases/camel_case"
 
 module InThatCase
-  # Your code goes here...
+  CASES = [
+    Cases::CamelCase,
+    # SnakeCase,
+  ]
 end

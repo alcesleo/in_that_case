@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jimmy Börjesson"]
   spec.email         = ["alcesleo@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Converts between different capitalization styles.}
+  spec.description   = %q{in_that_case aims to be a well behaved unix tool that can convert between for example camelCase and snake_case.}
+  spec.homepage      = "https://github.com/alcesleo/in_that_case"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
