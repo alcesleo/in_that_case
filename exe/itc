@@ -18,22 +18,22 @@ doc = <<DOC
 In That Case
 
 Usage:
-  #{__FILE__} (#{CONVENTION_ARGS.map(&:argument).join(" | ")}) [--from=<case>] (<input> | -)
+  #{__FILE__} (#{CONVENTION_ARGS.map(&:argument).join(" | ")})  (<input> | -)
 
 Options:
   --help        Show this screen.
   #{CONVENTION_ARGS_DOC}
-  --from=<case> Define the input case.
 DOC
 
 begin
-  args = Docopt::docopt(doc)
+  args  = Docopt::docopt(doc)
   input = args.fetch("<input>")
   input = $stdin.gets.chomp if input == "-"
 
   to_convention = CONVENTION_ARGS.detect { |ca| args.fetch(ca.argument) }.convention
 
   puts InThatCase.convert(input, to_convention)
-rescue Docopt::Exit => e
-  puts e.message
+rescue Docopt::Exit, InThatCase::InThatCaseError => e
+  warn e.message
+  exit 1
 end
