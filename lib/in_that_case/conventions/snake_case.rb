@@ -1,6 +1,8 @@
 module InThatCase
-  module Cases
-    class SnakeCase
+  module Conventions
+    module SnakeCase
+      module_function
+
       def to_s
         "snake_case"
       end
@@ -13,7 +15,7 @@ module InThatCase
         str.split("_")
       end
 
-      def detect(str)
+      def matches?(str)
         !!(str =~ /\A[a-z]+(_[a-z0-9]+)+\z/)
       end
     end

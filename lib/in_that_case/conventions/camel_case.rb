@@ -1,6 +1,8 @@
 module InThatCase
-  module Cases
-    class CamelCase
+  module Conventions
+    module CamelCase
+      module_function
+
       def convert(words)
         result = words.take(1)
         result << words.drop(1).map(&:capitalize)
@@ -11,7 +13,7 @@ module InThatCase
         str.split(/(?=[A-Z])/).map(&:downcase)
       end
 
-      def detect(str)
+      def matches?(str)
         !!(str =~ /\A[a-z]+([A-Z][a-z0-9]+)+\z/)
       end
     end

@@ -1,9 +1,11 @@
 require "in_that_case/version"
-require "in_that_case/cases/camel_case"
+
+require "in_that_case/conventions/camel_case"
+require "in_that_case/conventions/snake_case"
 
 module InThatCase
   CASES = [
-    Cases::CamelCase,
-    # SnakeCase,
+    Conventions::CamelCase,
+    Conventions::SnakeCase,
   ]
 end
