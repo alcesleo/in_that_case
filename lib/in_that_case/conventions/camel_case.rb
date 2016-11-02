@@ -1,6 +1,10 @@
+require "in_that_case/conventions/convention"
+
 module InThatCase
   module Conventions
     module CamelCase
+      extend Convention
+
       module_function
 
       def convert(words)

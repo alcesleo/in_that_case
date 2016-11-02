@@ -10,11 +10,11 @@ module TestCase
 end
 
 describe TestCase do
-  it "has a name" do
-    expect(described_class.convention).to eq "dromedary"
+  it "has a short name" do
+    expect(described_class.short_name).to eq "test"
   end
 
   it "has a representation of itself" do
-    expect(described_class.representation).to eq "dromedary%case"
+    expect(described_class.representation).to eq "test%case"
   end
 end

@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+require "rubygems"
+require "bundler/setup"
+require "docopt"
+require "in_that_case"
+
+ConventionArgument  = Struct.new(:convention, :argument)
+
+CONVENTION_ARGS     = InThatCase::CONVENTIONS.map { |c|
+  ConventionArgument.new(c, "--#{c.short_name}")
+}
+
+CONVENTION_ARGS_DOC = CONVENTION_ARGS.map { |ca|
+  [ca.argument.ljust(14), "Convert to #{ca.convention.representation}."].join
+}.join("\n  ")
+
+doc = <<DOC
+In That Case
+
+Usage:
+  #{__FILE__} (#{CONVENTION_ARGS.map(&:argument).join(" | ")}) [--from=<case>] (<input> | -)
+
+Options:
+  --help        Show this screen.
+  #{CONVENTION_ARGS_DOC}
+  --from=<case> Define the input case.
+DOC
+
+begin
+  args = Docopt::docopt(doc)
+  input = args.fetch("<input>")
+  input = $stdin.gets.chomp if input == "-"
+
+  to_convention = CONVENTION_ARGS.detect { |ca| args.fetch(ca.argument) }.convention
+
+  puts InThatCase.convert(input, to_convention)
+rescue Docopt::Exit => e
+  puts e.message
+end

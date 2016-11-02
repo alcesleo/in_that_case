@@ -1,11 +1,11 @@
+require "in_that_case/conventions/convention"
+
 module InThatCase
   module Conventions
     module SnakeCase
-      module_function
+      extend Convention
 
-      def to_s
-        "snake_case"
-      end
+      module_function
 
       def convert(words)
         words.join("_")

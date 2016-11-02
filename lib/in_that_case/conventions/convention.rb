@@ -2,10 +2,21 @@ module InThatCase
   module Conventions
     module Convention
       module_function
+
       public
 
-      def convention
-        self.name.split("::").last.downcase
+      def short_name
+        convention_words.first
+      end
+
+      def representation
+        convert(convention_words)
+      end
+
+      private
+
+      def convention_words
+        [self.name.split("::").last.gsub("Case", "").downcase, "case"]
       end
     end
   end

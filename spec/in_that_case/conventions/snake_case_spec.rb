@@ -2,10 +2,6 @@ require "spec_helper"
 require "in_that_case/conventions/snake_case"
 
 RSpec.describe InThatCase::Conventions::SnakeCase do
-  it "reports its name" do
-    expect(described_class.to_s).to eq "snake_case"
-  end
-
   it "detects snake_case" do
     expect(subject.matches?("snake_case")).to eq true
     expect(described_class.matches?("camelCase")).to eq false
