@@ -18,3 +18,4 @@ inThatCase
 
 * `snake_case`
 * `camelCase`
+* `PascalCase`
