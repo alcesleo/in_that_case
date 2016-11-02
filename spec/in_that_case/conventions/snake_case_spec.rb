@@ -2,10 +2,7 @@ require "spec_helper"
 require "in_that_case/conventions/snake_case"
 
 RSpec.describe InThatCase::Conventions::SnakeCase do
-  it "detects snake_case" do
-    expect(subject.matches?("snake_case")).to eq true
-    expect(described_class.matches?("camelCase")).to eq false
-  end
+  include_examples "convention"
 
   it "gets the words" do
     expect(described_class.extract_words("in_that_case")).to eq %w[in that case]
