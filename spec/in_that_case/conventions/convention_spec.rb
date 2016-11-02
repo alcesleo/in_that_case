@@ -9,12 +9,12 @@ module TestCase
   end
 end
 
-describe TestCase do
+describe InThatCase::Conventions::Convention do
   it "has a short name" do
-    expect(described_class.short_name).to eq "test"
+    expect(TestCase.short_name).to eq "test"
   end
 
   it "has a representation of itself" do
-    expect(described_class.representation).to eq "test%case"
+    expect(TestCase.representation).to eq "test%case"
   end
 end
