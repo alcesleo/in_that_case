@@ -1,13 +1,12 @@
 require "in_that_case/version"
 
-require "in_that_case/conventions/camel_case"
-require "in_that_case/conventions/snake_case"
+# Require all convention files
+Dir["lib/in_that_case/conventions/*.rb"].each do |convention|
+  require File.join("in_that_case/conventions", File.basename(convention, File.extname(convention)))
+end
 
 module InThatCase
-  CONVENTIONS = [
-    Conventions::CamelCase,
-    Conventions::SnakeCase,
-  ]
+  CONVENTIONS = Conventions.constants.map { |c| Conventions.const_get(c) }
 
   UnrecognizedConvention = Class.new(StandardError)
 

@@ -1,4 +1,4 @@
-require "in_that_case/conventions/convention"
+require "in_that_case/convention"
 
 module InThatCase
   module Conventions

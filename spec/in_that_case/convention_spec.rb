@@ -1,15 +1,15 @@
 require "spec_helper"
-require "in_that_case/conventions/convention"
+require "in_that_case/convention"
 
 module TestCase
-  extend InThatCase::Conventions::Convention
+  extend InThatCase::Convention
 
   def self.convert(words)
     words.join("%")
   end
 end
 
-describe InThatCase::Conventions::Convention do
+describe InThatCase::Convention do
   it "has a short name" do
     expect(TestCase.short_name).to eq "test"
   end
