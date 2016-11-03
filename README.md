@@ -3,6 +3,8 @@
 `itc` aims to be a well behaved UNIX tool to convert between different
 capitalization conventions.
 
+I wrote a blog post about it [here](http://alcesleo.github.io/2016/11/03/exemplary-design/).
+
 ## Usage
 
 ```bash
