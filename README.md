@@ -22,3 +22,4 @@ itc --help
 * `snake_case`
 * `camelCase`
 * `PascalCase`
+* `dash-case`
