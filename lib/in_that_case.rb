@@ -15,6 +15,7 @@ module InThatCase
 
   def convert(input, to_convention, from_convention = nil)
     from_convention ||= CONVENTIONS.detect { |c| c.matches?(input) } or fail UnrecognizedConvention, "Unrecognized convention: #{input}"
+
     words = from_convention.extract_words(input)
     to_convention.convert(words)
   end
