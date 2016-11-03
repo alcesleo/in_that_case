@@ -4,25 +4,40 @@ require "bundler/setup"
 require "docopt"
 require "in_that_case"
 
-ConventionArgument  = Struct.new(:convention, :argument)
+ConventionOption = Struct.new(:convention, :argument, :documentation)
+OPTION_DOC_WIDTH = 15
 
-CONVENTION_ARGS     = InThatCase::CONVENTIONS.map { |c|
-  ConventionArgument.new(c, "--#{c.short_name}")
-}
+def convention_options
+  InThatCase::CONVENTIONS.map { |c|
+    ConventionOption.new(c, "--#{c.short_name}", "Convert to #{c.representation}.")
+  }
+end
 
-CONVENTION_ARGS_DOC = CONVENTION_ARGS.map { |ca|
-  [ca.argument.ljust(14), "Convert to #{ca.convention.representation}."].join
-}.join("\n  ")
+def convention_option_list
+  convention_options.map(&:argument).join(" | ")
+end
+
+def option_documentation
+  result = convention_options.map { |ca|
+    [ca.argument, ca.documentation]
+  }
+
+  result.unshift(["-h --help", "Show this screen."])
+
+  result.map { |arg, doc|
+    [arg.ljust(OPTION_DOC_WIDTH), doc].join
+  }.join("\n  ")
+end
 
 doc = <<DOC
 In That Case
 
 Usage:
-  #{__FILE__} (#{CONVENTION_ARGS.map(&:argument).join(" | ")})  (<input> | -)
+  #{__FILE__} (#{convention_option_list}) (<input> | -)
+  #{__FILE__} -h | --help
 
 Options:
-  --help        Show this screen.
-  #{CONVENTION_ARGS_DOC}
+  #{option_documentation}
 DOC
 
 begin
