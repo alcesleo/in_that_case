@@ -1,8 +1,16 @@
 module InThatCase
   module Convention
-    module_function
+    def extract_words(str)
+      fail NotImplementedError
+    end
 
-    public
+    def matches?(str)
+      fail NotImplementedError
+    end
+
+    def convert(words)
+      fail NotImplementedError
+    end
 
     def short_name
       convention_words.first
