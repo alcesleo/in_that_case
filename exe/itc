@@ -3,41 +3,20 @@ require "rubygems"
 require "bundler/setup"
 require "docopt"
 require "in_that_case"
+require "in_that_case/cli"
 
-ConventionOption = Struct.new(:convention, :argument, :documentation)
-OPTION_DOC_WIDTH = 15
-
-def convention_options
-  InThatCase::CONVENTIONS.map { |c|
-    ConventionOption.new(c, "--#{c.short_name}", "Convert to #{c.representation}.")
-  }
-end
-
-def convention_option_list
-  convention_options.map(&:argument).join(" | ")
-end
-
-def option_documentation
-  result = convention_options.map { |ca|
-    [ca.argument, ca.documentation]
-  }
-
-  result.unshift(["-h --help", "Show this screen."])
-
-  result.map { |arg, doc|
-    [arg.ljust(OPTION_DOC_WIDTH), doc].join
-  }.join("\n  ")
-end
+OPTION_ALIGN_WIDTH = 15
+CLI = InThatCase::CLI.new(InThatCase::CONVENTIONS, OPTION_ALIGN_WIDTH)
 
 doc = <<DOC
 In That Case
 
 Usage:
-  #{__FILE__} (#{convention_option_list}) (<input> | -)
+  #{__FILE__} #{CLI.convention_option_list} (<input> | -)
   #{__FILE__} -h | --help
 
 Options:
-  #{option_documentation}
+#{CLI.option_documentation}
 DOC
 
 begin
@@ -45,9 +24,7 @@ begin
   input = args.fetch("<input>")
   input = $stdin.gets.chomp if input == "-"
 
-  to_convention = CONVENTION_ARGS.detect { |ca| args.fetch(ca.argument) }.convention
-
-  puts InThatCase.convert(input, to_convention)
+  puts InThatCase.convert(input, CLI.to_convention(args))
 rescue Docopt::Exit, InThatCase::InThatCaseError => e
   warn e.message
   exit 1
