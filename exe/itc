@@ -12,8 +12,8 @@ doc = <<DOC
 In That Case
 
 Usage:
-  #{__FILE__} #{CLI.convention_option_list} (<input> | -)
-  #{__FILE__} -h | --help
+  itc #{CLI.convention_option_list} (<input> | -)
+  itc -h | --help
 
 Options:
 #{CLI.option_documentation}
