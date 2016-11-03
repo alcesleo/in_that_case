@@ -15,6 +15,10 @@ Usage:
   itc #{CLI.convention_option_list} [<input>]
   itc -h | --help
 
+Examples:
+  itc --camel in_that_case
+  echo inThisCase | itc --snake
+
 Arguments:
   <input>        The input text to be converted, if empty stdin will be used.
 
