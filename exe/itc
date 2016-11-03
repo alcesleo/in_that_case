@@ -12,8 +12,11 @@ doc = <<DOC
 In That Case
 
 Usage:
-  itc #{CLI.convention_option_list} (<input> | -)
+  itc #{CLI.convention_option_list} [<input>]
   itc -h | --help
+
+Arguments:
+  <input>        The input text to be converted, if empty stdin will be used.
 
 Options:
 #{CLI.option_documentation}
@@ -22,7 +25,7 @@ DOC
 begin
   args  = Docopt::docopt(doc)
   input = args.fetch("<input>")
-  input = $stdin.gets.chomp if input == "-"
+  input = $stdin.gets.chomp if input.nil?
 
   puts InThatCase.convert(input, CLI.to_convention(args))
 rescue Docopt::Exit, InThatCase::InThatCaseError => e

@@ -7,7 +7,7 @@ describe "itc executable" do
   end
 
   it "it accepts piped input" do
-    expect(`echo inThatCase | ./exe/itc --snake -`).to eq "in_that_case\n"
+    expect(`echo inThatCase | ./exe/itc --snake`).to eq "in_that_case\n"
   end
 
   it "displays an error when given an unrecognized convention" do
