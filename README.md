@@ -12,6 +12,9 @@ in_that_case
 # Use a trailing - to read from stdin
 $ echo in_that_case | itc --camel -
 inThatCase
+
+# See all the available options in the help
+itc --help
 ```
 
 ## Supported conventions
