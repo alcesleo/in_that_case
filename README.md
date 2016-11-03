@@ -23,3 +23,17 @@ itc --help
 * `camelCase`
 * `PascalCase`
 * `dash-case`
+
+## Development
+
+```bash
+# run the tests
+bundle exec rspec
+
+# run the executable
+exe/itc --help
+
+# install the executable, this makes it available without the full path
+rake install
+itc --help
+```
