@@ -11,8 +11,7 @@ I wrote a blog post about it [here](http://alcesleo.github.io/2016/11/03/exempla
 $ itc --snake inThatCase
 in_that_case
 
-# Use a trailing - to read from stdin
-$ echo in_that_case | itc --camel -
+$ echo in_that_case | itc --camel
 inThatCase
 
 # See all the available options in the help
