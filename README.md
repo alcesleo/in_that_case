@@ -1,4 +1,4 @@
-# InThatCase
+# InThatCase [![Build Status](https://travis-ci.org/alcesleo/in_that_case.svg?branch=master)](https://travis-ci.org/alcesleo/in_that_case)
 
 `itc` aims to be a well behaved UNIX tool to convert between different
 capitalization conventions.
