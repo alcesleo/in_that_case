@@ -9,25 +9,14 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jimmy Börjesson"]
   spec.email         = ["alcesleo@gmail.com"]
 
-  spec.summary       = %q{Converts between different capitalization styles.}
+  spec.summary       = %q{Convert between different capitalization styles.}
   spec.description   = %q{in_that_case aims to be a well behaved unix tool that can convert between for example camelCase and snake_case.}
   spec.homepage      = "https://github.com/alcesleo/in_that_case"
   spec.license       = "MIT"
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
-
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
+  spec.files         = Dir['Gemfile', 'LICENSE.txt', 'README.md', 'Rakefile', 'exe/*', 'in_that_case.gemspec', 'lib/**/*']
   spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.executables   = "itc"
   spec.require_paths = ["lib"]
 
   spec.add_dependency "docopt"
